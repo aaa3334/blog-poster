@@ -71,7 +71,50 @@ Click on profile -> settings -> access tokens -> create new token
 
 The code in website-display is for typescript and the nextjs14 app router. You will need to have connected up supabase to your app and have an initialised supabase client for the schema/database you created in supabase. The base page is a basic blog page which fetches the blog posts then they are displayed when you press on one of them (very stock standard for what blogs tend to look like).
 
+# Setting up the cron job
 
+8) Go back to the huggingface space and find the url we are calling to:
+
+The URL for my space is: https://huggingface.co/spaces/username/blog_generation
+so the url we call to is:
+https://username-blog-generation.hf.space/generate-blog-post
+
+9) Create the cron job in supabase (go back to the sql editor).
+Fill in:
+1) The URL from the step above
+2) The 'Authorization' token which is what we set up in step 7
+3) our random authorisation key (authorisation-mine) which we set up in the first steps.
+
+You can test if it is working by running the below. You should see the new blog posts appear in the database.
+
+```
+-- -- SELECT cron.unschedule('blog-posts-automate')
+
+
+-- select
+--   cron.schedule(
+--     'blog-posts-automate',
+--     '10 9 * * 1,3,5', 
+--     $$
+    SELECT
+      net.http_post(
+        url:='________',  
+        headers:='{
+          "Content-Type": "application/json",
+          "Authorization": "Bearer __________",
+          "authorisation-mine": "Bearer ________"
+        }'::jsonb,
+        body:='{}'::jsonb
+      ) as request_id;
+  --         $$
+  -- );
+```
+
+When that is working, you can uncomment the rest of the code after the first select and set your cron timing (you can use this website to check how often it is and what the numbers there mean: https://crontab.guru )
+eg this: '0,30 * * * *' means every 30 minutes
+
+
+10) Everything should now be set up and working.
 
 # Questions?
 Let me know if there are issues or questions - it is a pretty simple setup so just wanted to share as it is the full stack solution pretty much for how to generate a blog
