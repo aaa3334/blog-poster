@@ -48,8 +48,8 @@ In the keywords table, add random terms you want for your blog posts (note you c
 4) Test the deployment by running the docker container locally:
 
 `cd blog-creator
-`docker build -t blog-generator .
-`docker run -p 7860:7860 blog-generator
+docker build -t blog-generator .
+docker run -p 7860:7860 blog-generator`
 
 (Check it is working by going to localhost:7860/docs and testing the API)
 
