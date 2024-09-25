@@ -42,7 +42,8 @@ Note: Be VERY careful about the *SUPABASE_SECRET_KEY* - we need to bypass RLS (r
 In a new project or new schema (or old one if you want), go to the sql editor and run the code in sql_supabase.md
 
 
-In the keywords table, add random terms you want for your blog posts (note you can also use chatgpt, anthropic, perplexity etc etc to generate this for you - i didn't set it up as it was easier to just ask it as opposed to getting a whole api set up for it).
+In the keywords table, add relevant terms you want for your blog posts (note you can also use chatgpt, anthropic, perplexity etc etc to generate this for you - I didn't set it up as it was easier to just ask it as opposed to getting a whole api set up for it).
+A good tool is ahrefs and semrush to find relevant keywords. (they have some free options too). Else there are many other sites/tools or you can just use AI if you want to start quickly.
 
 4) Test the deployment by running the docker container locally:
 
