@@ -10,9 +10,9 @@ Phase 1: (blog-creator)
 3) Saves the blog post to the database (here supabase is used)
 
 Phase 2: (website-display)
-A) In Supabase, we setup a trigger which will run the function on schedule (CRON)
-B) The database is then automatically updated with the new blog post
-C) Nextjs is used to fetch the new blog post from the database and display it on the website
+1) In Supabase, we setup a trigger which will run the function on schedule (CRON)
+2) The database is then automatically updated with the new blog post
+3) Nextjs is used to fetch the new blog post from the database and display it on the website
 
 
 ## Techstack
@@ -32,10 +32,9 @@ C) Nextjs is used to fetch the new blog post from the database and display it on
 ## Basic setup
 
 1) Fork/clone the repo
-2) Copy .env.example to .env and fill in your keys (create a randomly generated secret for API_KEY= (either run openssl rand -hex 32 and use that or just hit the keyboard randomly))
-(Note you can remove eg anthropic if you only want to use openai, or you can
-remove langfuse if you don't want to track usage metrics - or change to other providers)
-Note: Be VERY careful about the SUPABASE_SECRET_KEY - we need to bypass RLS (row level security) here as we are calling it from huggingface but be sure not to save it anywhere compromising.
+2) Copy .env.example to .env and fill in your keys (create a randomly generated secret for API_KEY= (either run `openssl rand -hex 32` and use that or just hit the keyboard randomly))  
+(Note you can remove eg anthropic if you only want to use openai, or you can remove langfuse if you don't want to track usage metrics - or change to other providers)  
+Note: Be VERY careful about the *SUPABASE_SECRET_KEY* - we need to bypass RLS (row level security) here as we are calling it from huggingface but be sure not to save it anywhere compromising.
 3) Fill in your company information either in main.py or leave it for the scheduling job/api calls
 
 ## Set up supabase
